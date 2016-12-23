@@ -1,0 +1,30 @@
+[{
+  "country": "United States",
+  "employees": "225",
+  "description": "The Headquarters with the most employees",
+  "flagUrl": "/images/usflag.png"
+},
+{
+  "country": "Germany",
+  "employees": "34",
+  "description": "Our beautifull company in Germany",
+  "flagUrl": "/images/germany.jpg"
+},
+{
+  "country": "Netherlands",
+  "employees": "22",
+  "description": "Our dutch building in Amsterdam",
+  "flagUrl": "/images/netherlands.svg"
+},
+{
+  "country": "Finland",
+  "employees": "10",
+  "description": "Over in the cold Finland",
+  "flagUrl": "/images/finland-flag.png"
+},
+{
+  "country": "Australia",
+  "employees": "120",
+  "description": "Our company in down under",
+  "flagUrl": "/images/australia.svg"
+}]

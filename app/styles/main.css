@@ -1,0 +1,247 @@
+body {
+  font-family: 'Space Mono', monospace!important;
+}
+
+.title-icon {
+      float: left;
+    font-size: 200%;
+    padding: 10px;
+}
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+.bold {
+  font-weight:bold;
+  letter-spacing: 3px;
+}
+.chart {
+  height: 500px;
+  width: 100%;
+}
+.bar text {
+  fill: #fff;
+}
+.bar rect {
+  fill: #2980b9;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+.graph-wrap {
+  position: relative;
+}
+
+
+.svgWorld {
+  height: auto;
+  overflow: initial!important;
+  width:70%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.x-axis {
+  position: absolute;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.x-axis p {
+  margin: 0!important;
+}
+
+
+.countryInfo {
+  width: 27%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 20px;
+  font-size: 120%;
+  font-family: 'Space Mono', monospace;
+}
+.country-name {
+  display: inline-block;
+}
+.countryInfo img {
+  max-width: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.countryInfo i {
+  margin-right: 10px;
+}
+.land {
+  fill: #2c3e50!important;
+}
+.alert {
+  display: inline-block;
+
+}
+.alert-danger {
+  width: 100%;
+}
+.land:hover {
+  fill: #2980b9!important;
+}
+
+.disabled {
+  pointer-events: none;
+  fill:#7f8c8d!important;
+}
+.row {
+  margin:0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.graph .labels.x-labels {
+  text-anchor: middle;
+}
+
+.graph .labels.y-labels {
+  text-anchor: end;
+}
+
+
+.graph {
+  height: 500px;
+  width: 800px;
+}
+
+.graph .grid {
+  stroke: #2c3e50;
+  stroke-dasharray: 0;
+  stroke-width: 2;
+}
+
+.line-graph line{
+  stroke: #e74c3c;
+  stroke-dasharray: 0;
+  stroke-width: 3;
+}
+.line-graph text {
+  stroke: #2c3e50;
+  stroke-width: 1;
+}
+.labels {
+  font-size: 13px;
+}
+
+.label-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  fill: black;
+}
+
+.data {
+  fill: red;
+  stroke-width: 1;
+}
+
+.progress-indicator {
+    position: abo;
+    position: absolute;
+    left: 30%;
+    color: #fff;
+}
+.input-wrap input {
+  box-shadow: 0;
+  border: 2px solid #2c3e50;
+  margin-bottom: 15px;
+  width: 90%;
+  padding: 10px;
+  font-size: 150%;
+  border-radius: 10px;
+}
+.data-header div{
+  font-weight: bold;
+  font-size: 125%;
+  border-bottom: 2px solid #2c3e50;
+  color: #2c3e50;
+}
+
+.data-row {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: #2c3e50;
+}
