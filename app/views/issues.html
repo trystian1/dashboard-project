@@ -1,4 +1,4 @@
-<p>This is the issues view.</p>
+ <p>This is the issues view.</p>
 <div class="col-md-8">
   <div class="input-wrap">
   <label>
@@ -6,24 +6,31 @@
     <input ng-model="searchText"></label>
   </div>
 </div>
-
-<div class="col-md-12 data-header">
-  <p class="leader">Click on a header to sort</p>
-  <div ng-click="issues.sortBy('opened')" class="col-md-1">Opened </div>
-  <div ng-click="issues.sortBy('firstName')" class="col-md-1">Reporter</div>
-  <div ng-click="issues.sortBy('email')" class="col-md-2">Email reporter</div>
-  <div ng-click="issues.sortBy('issue')" class="col-md-2">Issue</div>
-  <div ng-click="issues.sortBy('status')" class="col-md-1">Status</div>
-  <div ng-click="issues.sortBy('closed')" class="col-md-1">Closed</div>
-  <div ng-click="issues.sortBy('lastName')" class="col-md-1">Employee</div>
-</div>
-
-<div class="col-md-12 data-row" ng-repeat="issue in issues.issues | filter:searchText | orderBy: issues.orderProp">
-  <div class="col-md-1">{{issue.opened}}</div>
-  <div class="col-md-1">{{issue.firstName}}</div>
-  <div class="col-md-2">{{issue.email}}</div>
-  <div class="col-md-2">{{issue.issue}}</div>
-  <div class="col-md-1">{{issue.status == 'true' ? 'Open' : 'Closed'}}</div>
-  <div class="col-md-1">{{issue.closed}}</div>
-  <div class="col-md-1">{{issue.lastName}}</div>
+<div>
+  <div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th ng-click="issues.sortBy('opened')">Opened </th>
+        <th ng-click="issues.sortBy('firstName')">Reporter</th>
+        <th ng-click="issues.sortBy('email')">Email reporter</th>
+        <th ng-click="issues.sortBy('issue')">Issue</th>
+        <th ng-click="issues.sortBy('status')">Status</th>
+        <th ng-click="issues.sortBy('closed')">Closed</th>
+        <th ng-click="issues.sortBy('lastName')">Employee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="issue in issues.issues | filter:searchText | orderBy: issues.orderProp">
+        <td>{{issue.opened}}</td>
+        <td>{{issue.firstName}}</td>
+        <td>{{issue.email}}</td>
+        <td>{{issue.issue}}</td>
+        <td>{{issue.status == 'true' ? 'Open' : 'Closed'}}</td>
+        <td>{{issue.closed}}</td>
+        <td>{{issue.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 </div>
