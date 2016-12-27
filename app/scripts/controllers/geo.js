@@ -16,9 +16,25 @@ angular.module('dashboardProjectApp')
 
     });
 
-    this.onClickCountry = function(event) {
-      _this.countryName = event.currentTarget.attributes.title.value;
-      this.selectedCountry = _this.countries.find(function(item) {return item.country === _this.countryName});
+    this.showOnMap = function(country) {
+
+      var position = {
+        lat: country.lat,
+        lng: country.lng
+      }
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: position
+      });
+
+      var marker = new google.maps.Marker({
+        position: position,
+        map: map
+      });
+
+      map.panTo(position);
+
     }
 
   }]);

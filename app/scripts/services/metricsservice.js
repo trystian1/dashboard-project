@@ -8,7 +8,7 @@
  * Service in the dashboardProjectApp.
  */
 angular.module('dashboardProjectApp')
-  .service('metricsService', function ($http) {
+  .service('metricsService', function ($http, $timeout, $rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var _this = this;
     this.getQuaterSales = function() {
@@ -16,19 +16,48 @@ angular.module('dashboardProjectApp')
         method: 'GET',
         url: 'api/sales.json'
       });
-
     }
 
-    this.getIssues = function() {
-      return $http({
-        method: 'GET',
-        url: 'api/MOCK_DATA.csv'
-      });
+    this.pollQuarterSales = function() {
+
+      var _this = this,
+          data = { response: {}, calls: 0 };
+
+      var poller = function() {
+        $http.get('api/sales.json').then(function(r) {
+          data.response = r.data;
+          data.calls++;
+          _this.salesTimeout = $timeout(poller, 1000);
+          $rootScope.$broadcast('sales-data:fetched', data);
+        });
+      };
+      poller();
     }
 
+    this.pollIssues = function() {
+      var _this = this,
+          data = { response: {}, calls: 0 };
+
+      var poller = function() {
+        $http.get('api/MOCK_DATA.csv').then(function(r) {
+          data.response = r.data;
+          data.calls++;
+          _this.issuesTimeout =  $timeout(poller, 2000);
+          $rootScope.$broadcast('issues-data:fetched', data);
+        });
+      };
+      poller();
+    }
+
+    this.cancelRequests = function() {
+      console.log('cancel requestssss', this.salesTimeout, this.issuesTimeout);
+      $timeout.cancel(this.salesTimeout)
+      $timeout.cancel(this.issuesTimeout)
+    }
     this.convertCSV = function(csv) {
         var lines = csv.split("\n");
         var array = [];
+
         lines.forEach(function(line) {
           var lineInfo = line.split(',');
           var object = {

@@ -2,29 +2,39 @@
   "country": "United States",
   "employees": "225",
   "description": "The Headquarters with the most employees",
-  "flagUrl": "/images/usflag.png"
+  "flagUrl": "/images/usflag.png",
+  "lat": 37.090240,
+  "lng": -95.712891
 },
 {
   "country": "Germany",
   "employees": "34",
   "description": "Our beautifull company in Germany",
-  "flagUrl": "/images/germany.jpg"
+  "flagUrl": "/images/germany.jpg",
+  "lat": 51.165691,
+  "lng": 10.451526
 },
 {
   "country": "Netherlands",
   "employees": "22",
   "description": "Our dutch building in Amsterdam",
-  "flagUrl": "/images/netherlands.svg"
+  "flagUrl": "/images/netherlands.svg",
+  "lat": 52.129981,
+  "lng": 5.302738
 },
 {
   "country": "Finland",
   "employees": "10",
   "description": "Over in the cold Finland",
-  "flagUrl": "/images/finland-flag.png"
+  "flagUrl": "/images/finland-flag.png",
+  "lat": 61.924110,
+  "lng": 25.748151
 },
 {
   "country": "Australia",
   "employees": "120",
   "description": "Our company in down under",
-  "flagUrl": "/images/australia.svg"
+  "flagUrl": "/images/australia.svg",
+  "lat": -25.363,
+  "lng": 131.044
 }]

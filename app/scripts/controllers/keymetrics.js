@@ -8,10 +8,9 @@
  * Controller of the dashboardProjectApp
  */
 angular.module('dashboardProjectApp')
-  .controller('KeymetricsCtrl', ['metricsService', '$interval', function (metricsService, $interval) {
+  .controller('KeymetricsCtrl', ['metricsService', '$interval', '$scope', function (metricsService, $interval, $scope) {
 
       var _this = this;
-
       this.q1TotalSales = 0;
       this.q2TotalSales = 0;
       this.q3TotalSales = 0;
@@ -21,42 +20,25 @@ angular.module('dashboardProjectApp')
       this.issuesQ3Length = 0;
       this.issuesQ4Length = 0;
 
-      metricsService.getQuaterSales()
-        .then(function successCallback(response) {
-          _this.yearData = metricsService.parseData(response.data, 'registered');
-          _this.parseDataIntoQuarters(_this.yearData);
-        }, function errorCallback(response) {
+      metricsService.pollQuarterSales();
+      metricsService.pollIssues();
 
-        });
+      $scope.$on('$destroy', function iVeBeenDismissed() {
+        metricsService.cancelRequests();
+      });
 
-      metricsService.getIssues()
-        .then(function successCallback(response) {
-          _this.issues = metricsService.convertCSV(response.data);
+      $scope.$on('sales-data:fetched', function(event, data){
+        _this.yearData = metricsService.parseData(data.response, 'registered');
+        _this.parseDataIntoQuarters(_this.yearData);
+        _this.recentSale = data.response[data.response.length - 1];
+      });
+
+      $scope.$on('issues-data:fetched', function(event, data){
+          _this.issues = metricsService.convertCSV(data.response);
           _this.randomIssue = metricsService.getRandomIssue(_this.issues);
-          _this.startIssueInterval(_this.issues);
           _this.issueYearData = metricsService.parseData(_this.issues, 'opened');
           _this.parseIssuesIntoGraph(_this.issueYearData);
-        }, function errorCallback(response) {
-
-        });
-
-      this.salesInterval = $interval(function() {
-        var latestSale = metricsService.getLatestSale(),
-            data = metricsService.parseData(latestSale, 'registered');
-
-        _this.recentSale = latestSale[0]
-        _this.yearData.Q4.push(latestSale[0]);
-
-        _this.parseDataIntoQuarters(_this.yearData);
-
-      }, 1000);
-
-      this.startIssueInterval = function(issues) {
-        $interval(function() {
-          _this.randomIssue = metricsService.getRandomIssue(issues);
-          _this.issuesQ4Length += 1;
-        }, 4000);
-      }
+      });
 
       this.parseDataIntoQuarters = function(data) {
 
@@ -66,9 +48,6 @@ angular.module('dashboardProjectApp')
         this.q4TotalSales = metricsService.getTotalQuarterResult(data.Q4);
         this.progress = (this.q4TotalSales / 1000000) * 100;
 
-        if (this.progress > 100) {
-          $interval.cancel(this.salesInterval);
-        }
         this.q1Position = metricsService.getPositionOnGraph(this.q1TotalSales)
         this.q2Position = metricsService.getPositionOnGraph(this.q2TotalSales)
         this.q3Position = metricsService.getPositionOnGraph(this.q3TotalSales)

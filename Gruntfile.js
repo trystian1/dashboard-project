@@ -41,6 +41,7 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
+          uglify: true,
           livereload: '<%= connect.options.livereload %>'
         }
       },
@@ -304,6 +305,17 @@ module.exports = function (grunt) {
         }
     },
 
+    cssmin: {
+      dist: {
+        options: {
+           banner: '/*! MyLib.js 1.0.0 | Aurelio De Rosa (@AurelioDeRosa) | MIT Licensed */'
+        },
+        files: {
+           'app/dist/css/style.min.css': ['app/styles/*.css']
+        }
+      }
+    },
+
     concat: {
       dist: {}
     },
@@ -449,6 +461,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'uglify',
+      'cssmin',
       'postcss:server',
       'connect:livereload',
       'watch'
