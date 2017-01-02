@@ -20,6 +20,12 @@ angular.module('dashboardProjectApp')
       this.issuesQ3Length = 0;
       this.issuesQ4Length = 0;
 
+      this.screenWidth = $('.line-graph-wrap').width() - 40;
+
+      $(window).on('resize', function() {
+        _this.screenWidth = $('.line-graph-wrap').width() - 40;
+      });
+
       metricsService.pollQuarterSales();
       metricsService.pollIssues();
 

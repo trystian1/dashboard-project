@@ -32,42 +32,90 @@
 
 
 
- <div class="col-md-5 col-xs-12 col-sm-12">
+ <div class="col-md-5 col-xs-12 col-sm-12 line-graph-wrap">
   <h2><i class="glyphicon glyphicon-euro"></i> Sales this year </h2>
   <!-- <div class=""> -->
   <div class="graph-wrap">
     <svg class="graph">
       <g class="grid x-grid">
-        <line x1="90" x2="90" y1="5" y2="371"></line>
+        <line x1="40" x2="40" y1="5" y2="371"></line>
       </g>
       <g class="grid y-grid">
-        <line x1="90" x2="570" y1="370" y2="370"></line>
+        <line x1="40" ng-attr-x2="{{keymetric.screenWidth + 40}}" y1="370" y2="370"></line>
       </g>
       <g class="grid x-grid line-graph">
-        <line x1="90" x2="246" ng-attr-y1={{keymetric.q1Position}} ng-attr-y2={{keymetric.q2Position}}></line>
-        <text x="90" ng-attr-y="{{keymetric.q1Position}}">$ {{keymetric.q1TotalSales}}</text>
-        <line x1="246" x2="392" ng-attr-y1={{keymetric.q2Position}} ng-attr-y2={{keymetric.q3Position}}></line>
-        <text x="246" ng-attr-y="{{keymetric.q2Position + 13}}">$ {{keymetric.q2TotalSales}}</text>
-        <line x1="392" x2="538" ng-attr-y1={{keymetric.q3Position}} ng-attr-y2={{keymetric.q4Position}}></line>
-        <text x="392" ng-attr-y="{{keymetric.q3Position}}">$ {{keymetric.q3TotalSales}}</text>
-        <line x1="538" x2="570" ng-attr-y1={{keymetric.q4Position}} ng-attr-y2={{keymetric.q4Position}}></line>
-        <text x="538" ng-attr-y="{{keymetric.q4Position - 5}}">$ {{keymetric.q4TotalSales}}</text>
+        <line
+        x1="40"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.15) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q1Position}}
+        ng-attr-y2={{keymetric.q1Position}}></line>
+
+
+        <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.15) / keymetric.screenWidth)}}" ng-attr-y="{{keymetric.q1Position + 40}}">$ {{keymetric.q1TotalSales}}</text>
+
+        <line
+        ng-attr-x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.15) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.40) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q1Position}}
+        ng-attr-y2={{keymetric.q2Position}}></line>
+
+        <line class="pointer"
+        x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.15) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.15) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q1Position}}
+        ng-attr-y2=370></line>
+
+        <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.40) / keymetric.screenWidth)}}" ng-attr-y="{{keymetric.q2Position + 45}}">$ {{keymetric.q2TotalSales}}</text>
+
+        <line
+        ng-attr-x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.40) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.65) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q2Position}}
+        ng-attr-y2={{keymetric.q3Position}}></line>
+
+        <line class="pointer"
+        x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.40) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.40) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q2Position}}
+        ng-attr-y2=370></line>
+
+        <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.65) / keymetric.screenWidth)}}" ng-attr-y="{{keymetric.q3Position + 50}}">$ {{keymetric.q3TotalSales}}</text>
+
+      <line class="pointer"
+        x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.65) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.65) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q3Position}}
+        ng-attr-y2=370></line>
+
+        <line
+        ng-attr-x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.65) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q3Position}}
+        ng-attr-y2={{keymetric.q4Position}}></line>
+      <line class="pointer"
+        x1="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.90) / keymetric.screenWidth) + 40}}"
+        ng-attr-x2="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.90) / keymetric.screenWidth) + 40}}"
+        ng-attr-y1={{keymetric.q4Position}}
+        ng-attr-y2=370></line>
+
+        <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.90) / keymetric.screenWidth) - 20}}"  ng-attr-y="{{keymetric.q4Position + 55}}">$ {{keymetric.q4TotalSales}}</text>
       </g>
 
+
     <g class="labels x-labels">
-      <text x="100" y="400">Q1 2016</text>
-      <text x="246" y="400">Q2 2016</text>
-      <text x="392" y="400">Q3 2016</text>
-      <text x="538" y="400">Q4 2016</text>
+      <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.15) / keymetric.screenWidth) + 40}}" y="400">Q1</text>
+      <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.40) / keymetric.screenWidth) + 40}}" y="400">Q2</text>
+      <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.65) / keymetric.screenWidth) + 40}}" y="400">Q3</text>
+      <text ng-attr-x="{{keymetric.screenWidth * ((keymetric.screenWidth * 0.90) / keymetric.screenWidth) + 40}}" y="400">Q4</text>
     </g>
 
       <g class="labels y-labels">
-        <text x="80" y="15">$1000</text>
-        <text x="80" y="131">$900</text>
-        <text x="80" y="248">$800</text>
-        <text x="80" y="373">$700</text>
-        <text x="48" y="200" class="label-title">Sales</text>
-        <text x="50" y="215" class="label-title">(x 1000)</text>
+        <text x="34" y="15">$1000</text>
+        <text x="32" y="131">$900</text>
+        <text x="32" y="248">$800</text>
+        <text x="32" y="373">$700</text>
+        <text x="90" y="200" class="label-title">Sales</text>
+        <text x="102" y="215" class="label-title">(x 1000)</text>
       </g>
     </svg>
   </div>

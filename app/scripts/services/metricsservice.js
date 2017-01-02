@@ -50,10 +50,10 @@ angular.module('dashboardProjectApp')
     }
 
     this.cancelRequests = function() {
-      console.log('cancel requestssss', this.salesTimeout, this.issuesTimeout);
       $timeout.cancel(this.salesTimeout)
       $timeout.cancel(this.issuesTimeout)
     }
+
     this.convertCSV = function(csv) {
         var lines = csv.split("\n");
         var array = [];
